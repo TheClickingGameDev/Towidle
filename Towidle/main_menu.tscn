@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2fdylq61pakr"]
+
+[ext_resource type="Texture2D" uid="uid://dmfyp3ktdm3qg" path="res://Assets/tower.png" id="1_d03hx"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_pkadx"]
+[ext_resource type="FontFile" uid="uid://cw3h0pbmthd16" path="res://Assets/PixelyFont.ttf" id="2_h4hu3"]
+[ext_resource type="Texture2D" uid="uid://cknen22gehao8" path="res://Assets/button.png" id="2_smdb7"]
+[ext_resource type="Texture2D" uid="uid://cb2boub316o0p" path="res://Assets/buttonHovered.png" id="3_7iaa5"]
+
+[sub_resource type="Animation" id="Animation_6oigc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8yw74"]
+resource_name = "transition"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ka4f3"]
+_data = {
+"RESET": SubResource("Animation_6oigc"),
+"transition": SubResource("Animation_8yw74")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pkadx")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 1.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_h4hu3")
+theme_override_font_sizes/font_size = 32
+text = "towidle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TowerTextureRect" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -242.0
+offset_right = 64.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d03hx")
+
+[node name="StartButton" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -310.0
+offset_right = 80.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("2_smdb7")
+texture_hover = ExtResource("3_7iaa5")
+stretch_mode = 0
+
+[node name="StartLabel" type="Label" parent="Background/StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h4hu3")
+text = "start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsButton" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -210.0
+offset_right = 80.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("2_smdb7")
+texture_hover = ExtResource("3_7iaa5")
+stretch_mode = 0
+
+[node name="CreditsLabel" type="Label" parent="Background/CreditsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h4hu3")
+text = "credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -110.0
+offset_right = 80.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("2_smdb7")
+texture_hover = ExtResource("3_7iaa5")
+stretch_mode = 0
+
+[node name="ExitLabel" type="Label" parent="Background/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h4hu3")
+text = "exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ka4f3")
+}
+
+[connection signal="pressed" from="Background/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Background/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Background/ExitButton" to="." method="_on_exit_button_pressed"]

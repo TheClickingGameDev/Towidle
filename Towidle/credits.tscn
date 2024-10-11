@@ -1,0 +1,138 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0tyvp2k5n8n1"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_6xpjj"]
+[ext_resource type="FontFile" uid="uid://cw3h0pbmthd16" path="res://Assets/PixelyFont.ttf" id="2_y8fte"]
+[ext_resource type="Texture2D" uid="uid://cknen22gehao8" path="res://Assets/button.png" id="3_70lrh"]
+[ext_resource type="Texture2D" uid="uid://cb2boub316o0p" path="res://Assets/buttonHovered.png" id="4_ay6my"]
+
+[sub_resource type="Animation" id="Animation_6oigc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8yw74"]
+resource_name = "transition"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ka4f3"]
+_data = {
+"RESET": SubResource("Animation_6oigc"),
+"transition": SubResource("Animation_8yw74")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xpjj")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CreditsLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 1.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_y8fte")
+theme_override_font_sizes/font_size = 32
+text = "credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -637.0
+offset_top = -266.0
+offset_right = 641.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_y8fte")
+theme_override_font_sizes/font_size = 32
+text = "developer:
+
+the clicking game dev
+
+
+made with the godot engine:
+
+https://godotengine.org/license"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 240.0
+offset_right = 80.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+texture_normal = ExtResource("3_70lrh")
+texture_hover = ExtResource("4_ay6my")
+stretch_mode = 0
+
+[node name="BackLabel" type="Label" parent="Background/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y8fte")
+text = "back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ka4f3")
+}
+
+[connection signal="pressed" from="Background/BackButton" to="." method="_on_back_button_pressed"]

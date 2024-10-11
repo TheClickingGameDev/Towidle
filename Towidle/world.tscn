@@ -1,0 +1,199 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxerlsowf2bgq"]
+
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_30t0x"]
+[ext_resource type="Texture2D" uid="uid://t7m475efv11m" path="res://Assets/stone.png" id="2_bminv"]
+[ext_resource type="FontFile" uid="uid://cw3h0pbmthd16" path="res://Assets/PixelyFont.ttf" id="3_g1knp"]
+[ext_resource type="Texture2D" uid="uid://cb2boub316o0p" path="res://Assets/buttonHovered.png" id="4_eiw2k"]
+[ext_resource type="Texture2D" uid="uid://cknen22gehao8" path="res://Assets/button.png" id="4_pdo76"]
+
+[sub_resource type="Animation" id="Animation_6oigc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8yw74"]
+resource_name = "transition"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ka4f3"]
+_data = {
+"RESET": SubResource("Animation_6oigc"),
+"transition": SubResource("Animation_8yw74")
+}
+
+[node name="World" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_30t0x")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Stone" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.411111
+anchor_right = 0.55
+anchor_bottom = 0.588889
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+texture_normal = ExtResource("2_bminv")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_right = -1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_g1knp")
+theme_override_font_sizes/font_size = 24
+text = "stone: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShopButton" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -120.0
+offset_right = 90.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("4_pdo76")
+texture_hover = ExtResource("4_eiw2k")
+stretch_mode = 0
+
+[node name="ShopLabel" type="Label" parent="Background/ShopButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g1knp")
+text = "shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TowerButton" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -327.0
+offset_top = -120.0
+offset_right = -167.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("4_pdo76")
+texture_hover = ExtResource("4_eiw2k")
+stretch_mode = 0
+
+[node name="TowerLabel" type="Label" parent="Background/TowerButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g1knp")
+text = "tower"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 185.0
+offset_top = -120.0
+offset_right = 345.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("4_pdo76")
+texture_hover = ExtResource("4_eiw2k")
+stretch_mode = 0
+
+[node name="SettingsLabel" type="Label" parent="Background/SettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_g1knp")
+text = "settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrillTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ka4f3")
+}
+
+[connection signal="pressed" from="Background/Stone" to="." method="_on_stone_pressed"]
+[connection signal="pressed" from="Background/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Background/TowerButton" to="." method="_on_tower_button_pressed"]
+[connection signal="pressed" from="Background/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="timeout" from="DrillTimer" to="." method="_on_drill_timer_timeout"]
