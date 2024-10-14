@@ -21,7 +21,7 @@ func _on_upgrade_pickaxe_button_pressed() -> void:
 		
 func _on_upgrade_drill_button_pressed() -> void:
 	if Global.stone >= Global.drill_upgrade_cost && Global.drill_level < 1000 && Global.stone <= Global.stone_limit:
-		Global.stone -= Global.pickaxe_upgrade_cost
+		Global.stone -= Global.drill_upgrade_cost
 		Global.drill_multiplier += 4
 		Global.drill_level += 1
 		Global.drill_upgrade_cost += 100
