@@ -125,6 +125,7 @@ text = "upgrade tower:
 1000 stone"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="BackButton" type="TextureButton" parent="Background"]
 layout_mode = 1

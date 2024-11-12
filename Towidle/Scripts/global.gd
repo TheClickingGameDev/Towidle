@@ -18,7 +18,7 @@ var drill_upgrade_cost : int = 100
 var tower_level : int = 0
 var tower_upgrade_cost : int = 1000
 
-var stone_limit = 100000000000
+var stone_limit = 10000000000000000
 
 #misc
 var animation_playing = false

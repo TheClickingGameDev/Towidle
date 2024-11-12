@@ -1,11 +1,11 @@
 extends Control
 
 func _ready() -> void:
-	if Global.tower_level == 5:
+	if Global.tower_level == 10:
 		$Background/UpgradeTowerButton.visible = false
 	else:
 		$Background/UpgradeTowerButton/UpgradeTowerLabel.text = str("cost: ",Global.tower_upgrade_cost)
-	$Background/StatisticsLabel.text = str("statistics:\n\n tower level: ", Global.tower_level, "/5")
+	$Background/StatisticsLabel.text = str("statistics:\n\n tower level: ", Global.tower_level, "/10")
 	
 	match Global.tower_level:
 		0:
@@ -26,7 +26,7 @@ func _input(event: InputEvent) -> void:
 		_on_back_button_pressed()
 
 func _on_upgrade_tower_button_pressed() -> void:
-	if Global.stone >= Global.tower_upgrade_cost && Global.tower_level < 5 && Global.stone <= Global.stone_limit:
+	if Global.stone >= Global.tower_upgrade_cost && Global.tower_level < 10 && Global.stone <= Global.stone_limit:
 		$Transition.play("transition")
 		Global.animation_playing = true
 		$Background/UpgradeTowerButton.disabled = true
@@ -40,7 +40,7 @@ func _on_upgrade_tower_button_pressed() -> void:
 		$Background.modulate = Color.WHITE #changes the background back to normal
 		
 	$Background/UpgradeTowerButton/UpgradeTowerLabel.text = str("cost: ",Global.tower_upgrade_cost)
-	$Background/StatisticsLabel.text = str("statistics:\n\n tower level: ", Global.tower_level, "/5")
+	$Background/StatisticsLabel.text = str("statistics:\n\n tower level: ", Global.tower_level, "/10")
 
 func _on_back_button_pressed() -> void:
 	$Transition.play("transition")
